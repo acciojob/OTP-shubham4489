@@ -23,7 +23,8 @@
 .code-container{
 	display:flex;
 	width:500px;
-	margin-left:10px;
+	margin-right:1px;
+	gap:10px;
 }
 .code{
 	width:70px;

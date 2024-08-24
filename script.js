@@ -11,10 +11,11 @@ function onInput(event){
 }
 
 function onBackSpace(e){
+	e.preventDefault();
 	if(e.key === "Backspace" ){
-		e.target.value="";
-		e.target.previousElementSibling && e.target.previousElementSibling.focus();
-	}
+	    e.target.value="";
+	e.target.previousElementSibling&& e.target.previousElementSibling.focus();
+	} 
 }
 	
 for(let i=1; i<=numberOfInputs; i++){
