@@ -1,30 +1,15 @@
-//your JS code here. If required.
-const codeContainer= document.querySelector(".code-container")
-const numberOfInputs = 6;
-let lastEnteredInputElement = null;
+/const codes = document.querySelectorAll('.code');
 
-function onInput(event){
-	const currentElement =event.target;
-	if(currentElement.value){
-		currentElement.nextSibling&&currentElement.nextSibling.focus();
-	}
-}
+codes.forEach((code, index) => {
+    code.addEventListener('input', (e) => {
+        if (e.target.value.length > 0 && index < codes.length - 1) {
+            codes[index + 1].focus();
+        }
+    });
 
-function onBackSpace(e){
-	e.preventDefault();
-	if(e.key === "Backspace" ){
-	    e.target.value="";
-	e.target.previousElementSibling&& e.target.previousElementSibling.focus();
-	} 
-}
-	
-for(let i=1; i<=numberOfInputs; i++){
-	const input = document.createElement("input");
-	input.className = "code";
-	input.maxLength="1";
-	input.addEventListener("input" , onInput);
-	input.addEventListener("keyup", onBackSpace);
-	codeContainer.appendChild(input);
-}
-
-	
+    code.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+            codes[index - 1].focus();
+        }
+    });
+});
